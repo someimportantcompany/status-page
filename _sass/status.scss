@@ -1,0 +1,45 @@
+@import "./bootstrap/_variables.scss";
+
+.page {
+  margin: 0 auto;
+  max-width: 850px;
+  padding: 0 20px;
+  position: relative;
+}
+
+header {
+  a {
+    color: inherit !important;
+  }
+  .icon {
+    font-size: 2.5rem;
+    max-height: 4rem;
+    max-width: 4rem;
+  }
+}
+
+.component-status {
+  .icon-block {
+    width: $h4-font-size;
+  }
+
+  .icon {
+    font-size: $h5-font-size;
+    max-height: $h5-font-size;
+    max-width: $h5-font-size;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .description {
+    margin-left: $h4-font-size;
+  }
+}
+
+.mkdwn {
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

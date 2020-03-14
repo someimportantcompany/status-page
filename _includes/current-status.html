@@ -1,0 +1,17 @@
+{%- assign defaultLevel = site.data.status.levels | first %}
+{%- assign statusColor = site.data.status.status.color
+    | default: site.data.status.levels[site.data.status.status.level].color
+    | default: defaultLevel[1].color
+    | default: '#28A745' -%}
+
+{%- if site.data.status.status -%}
+<div class="current-status rounded mt-3 mb-5 p-3 {{ site.data.status.status.class }}" style="background-color: {{ statusColor }};">
+  <div class="mkdwn">
+    {%- if site.data.status.status.message -%}
+    {{ site.data.status.status.message | markdownify }}
+    {%- else -%}
+    {{ site.data.status.status | markdownify }}
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}

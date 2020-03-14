@@ -1,0 +1,66 @@
+icon: /img/font-awesome-svg/solid/stream.svg
+title: Status Page
+description: An example of an open-source statically-built [status-page](https://github.com/someimportantcompany/status-page).
+
+# status: All looks good!
+
+levels:
+  success:
+    color: '#28A745'
+    label: Operational
+  warning:
+    color: '#FFC107'
+  error:
+    color: '#DC3545'
+
+components:
+  status-page:
+    name: Status-Page
+    icon: /img/font-awesome-svg/solid/stream.svg
+    url: https://github.com/someimportantcompany/status-page
+  github-pages:
+    name: GitHub Pages
+    icon: /img/font-awesome-svg/brands/github.svg
+    url: https://pages.github.com
+
+# groups:
+#   aws:
+#     name: Amazon Web Services
+#     components:
+#       ecs:
+#         name: Elastic Container Service
+#       rds:
+#         name: Relational Database Service
+#       es:
+#         name: Elasticsearch Service
+
+incidents:
+  - title: '[Monzo] Payments from Nationwide may be delayed'
+    body: >
+      We’ve noticed that FPS payments to and from Nationwide are taking a while to
+      arrive due to a service disruption at Nationwide. Don’t worry, your payments should still
+      arrive eventually. Unless your payment has been returned to your account, please don't try
+      to send it again. We will continue to monitor.
+    timestamp: 2020-02-28 19:09
+  - title: '[DigitalOcean] Event Processing Delays/Errors'
+    updates:
+      - timestamp: 2020-01-31 17:54
+        body: >
+          **Resolved** - Our engineering team has confirmed resolution of the issue affecting Droplet
+          creates and event processing across all regions. All systems should be operating normally
+          at this time. If you continue to experience any problems, then please open a ticket with
+          our support team. We apologize for any inconvenience, and we appreciate your patience
+          throughout this process.
+      - timestamp: 2020-01-31 17:07
+        body: >
+          **Monitoring** - Our engineering team has identified the cause of issues affecting Droplet
+          creates and event processing, and functionality should be fully restored at this time. Our
+          team is now monitoring the situation for any further issues. We apologize for the
+          inconvenience and will share an update once we have confirmed that the issue is resolved.
+      - timestamp: 2020-01-31 16:54
+        body: >
+          **Investigating** - Our engineering team is investigating an issue affecting Droplet
+          creates and event processing across all regions. During this time, users may experience
+          intermittent errors or delays while working with resources, such as creating or destroying
+          Droplets. We apologize for the inconvenience and will share an update once we have more
+          information.

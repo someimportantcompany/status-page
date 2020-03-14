@@ -1,0 +1,37 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{%- assign rows = site.data.status.incidents | group_by_exp:"row","row.timestamp | default: row.updates[0].timestamp | date: '%F'" | sort: "name", "first" | reverse -%}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.data.status.title | strip | xml_escape }} - Incident History</title>
+    {%- if site.data.status.description -%}
+    <description>{{ site.data.status.description | markdownify | strip_html | strip | xml_escape }}</description>
+    {%- endif -%}
+    <link>{{ site.url }}</link>
+    <atom:link href="{{ '/history.xml' | absolute_url }}" rel="self" type="application/rss+xml" />
+    <pubDate>{{ rows[0].items[0].timestamp | default: rows[0].items[0].updates[0].timestamp | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    {% for r in rows limit:10 %}
+    {% for incident in r.items %}
+    <item>
+      {%- if incident.title -%}
+      <title>{{ incident.title | strip | xml_escape }}</title>
+      {%- elsif incident.body -%}
+      <title>{{ incident.body | markdownify | strip_html | strip | truncatewords: 10 | xml_escape }}</title>
+      {%- else -%}
+      <title>{{ incident.updates[0].body | markdownify | strip_html | strip | truncatewords: 10 | xml_escape }}</title>
+      {%- endif -%}
+      {%- if incident.body -%}
+      <description><![CDATA[{{ incident.body | markdownify | strip_html | strip }}]]></description>
+      {%- else -%}
+      <description><![CDATA[{{ incident.updates | map: "body" | join: " " | markdownify | strip }}]]></description>
+      {%- endif -%}
+      <pubDate>{{ incident.timestamp | default: incident.updates[0].timestamp | date_to_rfc822 }}</pubDate>
+    </item>
+    {% endfor %}
+    {% endfor %}
+  </channel>
+</rss>

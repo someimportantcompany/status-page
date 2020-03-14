@@ -1,0 +1,2 @@
+baseurl: ''
+exclude: [ 'examples', 'README.md' ]

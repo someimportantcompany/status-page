@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="MobileOptimized" content="320"/>
+
+    <meta property="og:site.data.status_name" content="{{ site.data.status.title | default: 'Status Page' }}"/>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.data.status.title | default: 'Status Page' }}</title>
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.data.status.title | default: 'Status Page' }}"/>
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.data.status.title | default: 'Status Page' }}"/>
+
+    {%- if site.data.status.description -%}
+    <meta name="description" content="{{ site.data.status.description | markdownify | strip_html | strip_newlines }}"/>
+    <meta property="og:description" content="{{ site.data.status.description | markdownify | strip_html | strip_newlines }}"/>
+    <meta name="twitter:description" content="{{ site.data.status.description | markdownify | strip_html | strip_newlines }}"/>
+    {%- endif %}
+
+    <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}"/>
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}"/>
+
+    <link rel="stylesheet" type="text/css" href="https://use.typekit.net/dmn7igh.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ '/css/style.css' | relative_url }}"/>
+  </head>
+  <body>
+    <div class="page container-fluid">
+      {% include page-header.html %}
+      {{ content }}
+      {% include page-footer.html %}
+    </div>
+  </body>
+</html>

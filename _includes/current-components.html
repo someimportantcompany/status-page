@@ -1,0 +1,93 @@
+{%- assign defaultLevel = site.data.status.levels | first %}
+{%- assign defaultLabel = defaultLevel[1].label | default: defaultLevel[0] | capitalize %}
+{%- assign defaultColor = defaultLevel[1].color | default: '#28A745' %}
+
+{%- if site.data.status.components -%}
+<ul class="list-group my-5">
+  {% for c in site.data.status.components -%}
+  {%- assign component = c[1] %}
+  {%- assign componentStatusColor = component.color
+      | default: site.data.status.levels[component.level].color
+      | default: defaultColor -%}
+  {%- assign componentStatusLabel = component.label
+      | default: site.data.status.levels[component.level].label
+      | default: component.level
+      | default: defaultLabel
+      | capitalize -%}
+  <li class="list-group-item component-status">
+    <div class="d-flex w-100 align-items-center">
+      <div class="icon-block">
+        {%- if component.icon -%}
+        <img class="icon mr-2" src="{{ component.icon }}"/>
+        {%- endif -%}
+      </div>
+      <p class="m-0">
+        {%- if component.url -%}
+        <a href="{{ component.url }}"><strong>{{ component.name | default: 'Component' }}</strong></a>
+        {%- else -%}
+        <strong>{{ component.name | default: 'Component' }}</strong>
+        {%- endif -%}
+      </p>
+      <div class="flex-fill"></div>
+      <p class="m-0" style="color: {{ componentStatusColor | default: '#eee' }}">{{componentStatusLabel | default: 'OK'}}</p>
+    </div>
+    {% if component.description %}<div class="description mkdwn">{{ component.description | markdownify }}</div>{% endif %}
+  </li>
+  {%- endfor %}
+</ul>
+{%- endif -%}
+
+{%- if site.data.status.groups -%}
+{%- for g in site.data.status.groups -%}
+{%- assign group = g[1] %}
+<ul class="list-group my-5">
+  <li class="list-group-item component-status">
+    <div class="d-flex w-100 align-items-center">
+      <div class="icon-block">
+        {%- if group.icon -%}
+        <img class="icon mr-2" src="{{ group.icon }}"/>
+        {%- endif -%}
+      </div>
+      <p class="m-0">
+        {%- if group.url -%}
+        <a href="{{ group.url }}"><strong>{{ group.name | default: 'Group' }}</strong></a>
+        {%- else -%}
+        <strong>{{ group.name | default: 'Group' }}</strong>
+        {%- endif -%}
+      </p>
+    </div>
+    {% if group.description %}<div class="description mkdwn">{{ group.description | markdownify }}</div>{% endif %}
+  </li>
+  {% for c in group.components -%}
+  {%- assign component = c[1] %}
+  {%- assign componentStatusColor = component.color
+      | default: site.data.status.levels[component.level].color
+      | default: defaultColor -%}
+  {%- assign componentStatusLabel = component.label
+      | default: site.data.status.levels[component.level].label
+      | default: component.level
+      | default: defaultLabel
+      | capitalize -%}
+  <li class="list-group-item component-status">
+    <div class="d-flex w-100 align-items-center">
+      <div class="icon-block">
+        {%- if component.icon -%}
+        <img class="icon mr-2" src="{{ component.icon }}"/>
+        {%- endif -%}
+      </div>
+      <p class="m-0">
+        {%- if component.url -%}
+        <a href="{{ component.url }}"><strong>{{ component.name | default: 'Component' }}</strong></a>
+        {%- else -%}
+        <strong>{{ component.name | default: 'Component' }}</strong>
+        {%- endif -%}
+      </p>
+      <div class="flex-fill"></div>
+      <p class="m-0" style="color: {{ componentStatusColor | default: '#eee' }}">{{componentStatusLabel | default: 'OK'}}</p>
+    </div>
+    {% if component.description %}<div class="description mkdwn">{{ component.description | markdownify }}</div>{% endif %}
+  </li>
+  {%- endfor %}
+</ul>
+{%- endfor %}
+{%- endif -%}

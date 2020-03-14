@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<section class="my-5">
+  <h3>History</h3>
+  {%- assign grouped = site.data.status.incidents | group_by_exp:"row","row.timestamp | default: row.updates[0].timestamp | date: '%B %Y'" -%}
+
+  {%- assign dates = site.time | date: '%B %Y' -%}
+  {%- for n in (1..6) -%}
+  {%- assign offset = n | times: 2419200 -%}
+  {%- capture dates -%}{{dates}},{{ site.time | date: '%s' | minus: offset | date: "%B %Y" }}{%- endcapture -%}
+  {%- endfor -%}
+  {%- assign dates = dates | split: "," | uniq -%}
+
+  {%- for month in dates -%}
+  {%- assign group = grouped | where: "name", month | first -%}
+  <div class="mt-4">
+    <h4 class="border-bottom">{{ month }}</h4>
+    {%- for incident in group.items -%}
+    <div class="incident mt-3">
+      {%- if incident.title -%}<h5>{{ incident.title }}</h5>{%- endif -%}
+      {%- if incident.body -%}<div class="mkdwn">{{ incident.body | markdownify }}</div>{%- endif -%}
+      {%- for update in incident.updates -%}
+        <div class="update">
+        {%- if update.title -%}<p><strong>{{ update.title }}</strong></p>{%- endif -%}
+        {%- if update.body -%}<div class="mkdwn">{{ update.body | markdownify }}</div>{%- endif -%}
+        {%- if update.timestamp -%}<p><small class="d-block text-secondary">{{ update.timestamp | date: '%F %R' }}</small></p>{%- endif -%}
+        </div>
+      {%- else -%}
+      {%- if incident.timestamp -%}<p><small class="d-block text-secondary">{{ incident.timestamp | date: '%F %R' }}</small></p>{%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- else -%}
+    <p class="text-secondary">No incidents reported today.</p>
+    {%- endfor -%}
+  </div>
+  {%- endfor -%}
+</section>

@@ -18,7 +18,7 @@
     <div class="d-flex w-100 align-items-center">
       <div class="icon-block">
         {%- if component.icon -%}
-        <img class="icon mr-2" src="{{ component.icon }}"/>
+        <img class="icon mr-2" src="{{ component.icon | relative_url }}"/>
         {%- endif -%}
       </div>
       <p class="m-0">
@@ -72,7 +72,7 @@
     <div class="d-flex w-100 align-items-center">
       <div class="icon-block">
         {%- if component.icon -%}
-        <img class="icon mr-2" src="{{ component.icon }}"/>
+        <img class="icon mr-2" src="{{ component.icon | relative_url }}"/>
         {%- endif -%}
       </div>
       <p class="m-0">

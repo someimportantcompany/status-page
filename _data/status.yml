@@ -1,8 +1,20 @@
 icon: /img/font-awesome-svg/solid/stream.svg
 title: Status Page
-description: An example of an open-source statically-built [status-page](https://github.com/someimportantcompany/status-page).
+description: |
+  An example of an **open-source statically-built status-page**. Be sure to check out the
+  [GitHub Repo](https://github.com/someimportantcompany/status-page) for this project to learn how to set one up for
+  your project, free of charge.
 
-# status: All looks good!
+  Benefits include:
+    - Open-source code
+    - Built from a single config file
+    - No Javascript
+    - Responsive design
+
+status:
+  class: bg-dark rounded text-white
+  message: >
+    **All looks good!** Then again, this is a static website hosted on [GitHub Pages](https://pages.github.com).
 
 levels:
   success:

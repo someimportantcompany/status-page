@@ -5,7 +5,7 @@
     | default: '#28A745' -%}
 
 {%- if site.data.status.status -%}
-<div class="current-status rounded mt-3 mb-5 p-3 {{ site.data.status.status.class }}" style="background-color: {{ statusColor }};">
+<div class="current-status rounded my-5 p-3 {{ site.data.status.status.class }}" style="background-color: {{ statusColor }};">
   <div class="mkdwn">
     {%- if site.data.status.status.message -%}
     {{ site.data.status.status.message | markdownify }}

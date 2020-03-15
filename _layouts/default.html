@@ -26,9 +26,29 @@
   </head>
   <body>
     <div class="page container-fluid">
-      {% include page-header.html %}
+      <header class="py-5">
+        <a class="d-flex flex-row justify-content-start align-items-center w-100 text-decoration-none" href="{{ '/' | relative_url }}">
+          {%- if site.data.status.icon -%}<img class="icon mr-2" src="{{ site.data.status.icon | relative_url }}"/>{%- endif -%}
+          <h1 class="m-0">{{ site.data.status.title | default: 'Status Page' }}</h1>
+        </a>
+      </header>
+
       {{ content }}
-      {% include page-footer.html %}
+
+      <footer class="my-5 d-flex justify-content-between align-items-center">
+        <small>
+          {%- if page.url == "/" -%}
+            <a href="{{ '/history' | relative_url }}" class="text-secondary text-decoration-none">History</a>
+          {%- else -%}
+            <a href="{{ '/' | relative_url }}" class="text-secondary text-decoration-none">Current</a>
+          {%- endif -%}
+        </small>
+        <small>
+          <a href="https://github.com/someimportantcompany/status-page" class="text-secondary text-decoration-none">
+            Powered by <strong>someimportantcompany/status-page</strong>
+          </a>
+        </small>
+      </footer>
     </div>
   </body>
 </html>

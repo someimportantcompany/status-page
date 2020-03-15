@@ -12,9 +12,9 @@ header {
     color: inherit !important;
   }
   .icon {
-    font-size: 2.5rem;
-    max-height: 4rem;
-    max-width: 4rem;
+    font-size: $h2-font-size;
+    max-height: $h2-font-size;
+    max-width: $h2-font-size;
   }
 }
 

@@ -1,14 +1,14 @@
 <div align="center">
   <h1><img height="22px" width="22px" src="/img/font-awesome-svg/solid/stream.svg"/> status-page</h1>
   <p>An open-source Status Page site for your projects, big or small!</p>
-  <p>Check out the <a href="#">example site</a>!</p>
+  <p>Check out the <a href="https://someimportantcompany.github.io/status-page">example status-page</a>!</p>
 </div>
 
 ## Features
 
 - **An open-source staticly-built status-page**, built from the designs of popular status pages you see around the web.
-- **Generated entirely from [a config file](./_data/status.yml)**, so you can edit the file in git or on GitHub & have your favourite CI tool build your site for you!
-- **Inspired by** products like [StatusPage.io](https://statuspage.io), [Sorry™](https://sorryapp.com) & other open-source tools like [slatedocs/slate](https://github.com/slatedocs/slate).
+- **Generated entirely from [a config file](#configuration)**, so you can edit the file in git or directly on GitHub & have an external service build your site for you!
+- **Inspired by** well-thought out products like [StatusPage.io](https://statuspage.io), [Sorry™](https://sorryapp.com) & other quick-start open-source tools like [slatedocs/slate](https://github.com/slatedocs/slate).
 
 ## Why a status page?
 
@@ -18,9 +18,9 @@ There are plenty of hosted status page solutions out there. One of the best is [
 
 ## Getting Started
 
-[Much like Slate](https://github.com/slatedocs/slate#getting-set-up), you should fork this repository to your own profile & start customising it to your own needs. Once forked, clone **your repository** (not this one!) to your machine & get to it!
+This has been designed to [generate new repositories](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) using the `master` branch as a template. So to get started click [**Use this template**](https://github.com/someimportantcompany/status-page/generate) to setup your own status-page repository.
 
-You can run this site locally [using Docker 🐋](https://www.docker.com) to test changes before deploying:
+You can run this site locally [using 🐋 Docker](https://www.docker.com) to test changes before deploying:
 
 ```sh
 $ git clone git@github.com:YOURUSERNAME/status-page.git status-page
@@ -28,11 +28,14 @@ $ cd status-page/
 $ docker run --rm -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/minimal jekyll serve
 ```
 
-- This will run a HTTP server at https://localhost:4000 for you to view your status-page. Any changes you make will automatically cause the process to rebuild the site. Happy status-paging!
+- This will run a HTTP server at https://localhost:4000 for you to view your status-page. Any changes you make will automatically cause the process to rebuild the site.
+- If you choose to run this page under a base-url (e.g. `/status-page`) be sure to set your `_config.yml`'s `baseurl`: Right now it's set to blank.
+  - And when running a local HTTP server using the method above, note the change in `Server address` to include the `baseurl` too.
+- [See later on](#deployment-ideas) for deployment ideas to GitHub Pages & other cloud providers.
 
 ## Configuration
 
-The config file is stored at [`./_data/status.yml`](./_data/status.yml). Edit this file to brand the site to your liking, make announcements, & most importantly write up incidents!
+The config file is stored at [`./_data/status.yml`](./_data/status.yml). The default file is setup to use all the features, so be sure to edit this file to your liking. Use it to make announcements, & most importantly write up incidents!
 
 ### Branding
 
@@ -48,7 +51,7 @@ description: >
   [status-page](https://github.com/someimportantcompany/status-page).
 ```
 
-### Levels
+### Levels
 
 Set the relevant levels & colours for your status messages.
 
@@ -104,7 +107,7 @@ Set top-level components of your product.
 # Each component requires a name, optionally an icon
 components:
   platform:
-    name: Pied Piper
+    name: Platform
     icon: /img/font-awesome-svg/brands/pied-piper-square.svg
 
 # Set a level color/label for each component
@@ -129,7 +132,6 @@ Build groups of components to better detail the status of your product or depend
 
 ```yml
 # The order matters for groups & their components
-
 groups:
   services:
     name: Decentralized Services
@@ -158,10 +160,11 @@ The big one! Write up incidents either after the fact or as-and-when they happen
 
 ```yml
 incidents:
-  # All incidents must have at minimum a timestamp to be shown
+  # All incidents must have at minimum a timestamp to be shown.
   - title: Initial release!
     timestamp: 2020-03-12
 
+  # Incidents can just have a body, if this is just a message you're pushing out to your audience.
   - title: Payments from Nationwide may be delayed
     body: >
       We’ve noticed that FPS payments to and from Nationwide are taking a while to
@@ -170,7 +173,7 @@ incidents:
       to send it again. We will continue to monitor.
     timestamp: 2020-02-28 19:09
 
-  # Since incidents often have updates, the timestamp can be on the updates too
+  # Since incidents often have updates, the timestamp can be on the updates too.
   - title: Event Processing Delays/Errors
     updates:
       - timestamp: 2020-01-31 17:54
@@ -198,6 +201,22 @@ incidents:
 ## Deployment Ideas
 
 Being built upon [Jekyll](https://jekyllrb.com), this project is immediately designed to be deployed onto [GitHub Pages](https://pages.github.com). Having said that, the final build output is a static website, so you are free to deploy your status-page anywhere you like. The Jekyll documentation covers [manual deployments](https://jekyllrb.com/docs/deployment/manual/), [automated deployments](https://jekyllrb.com/docs/deployment/automated/) & [3rd party deployments](https://jekyllrb.com/docs/deployment/third-party/) including [Netlify](https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/).
+
+### GitHub Pages
+
+If you choose to deploy with [GitHub Pages](https://pages.github.com), be sure to [enable it](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) in your repository settings, and build from the `master` branch.
+
+If you choose not to use a custom domain, e.g. `status.someimportantcompany.com`, and instead want to run this project under a folder, e.g. `someimportantcompany.github.io/status-page`, be sure to change Jekyll's `baseurl` setting to your top-level folder:
+
+```yml
+# someimportantcompany.github.io/status-page
+baseurl: /status-page
+
+# jdrydn.github.io/status
+baseurl: /status
+```
+
+See [Jekyll's configuration](https://jekyllrb.com/docs/configuration/options/) for more information on the `baseurl` property.
 
 ## Release Notes
 

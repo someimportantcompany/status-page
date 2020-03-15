@@ -1,7 +1,16 @@
 ---
 layout: default
 ---
+{%- if site.data.status.description -%}
 <div class="mkdwn">{{ site.data.status.description | markdownify }}</div>
+{%- else -%}
+<div class="mkdwn">
+  <p>
+    We continuously monitor the status of {{ site.data.status.title | default: 'the Status Page' }} and all related
+    services. If there are any interruptions in service, a note will be posted here.
+  </p>
+</div>
+{%- endif -%}
 
 {%- include current-status.html -%}
 {%- include current-components.html -%}

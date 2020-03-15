@@ -1,8 +1,16 @@
-icon: /img/font-awesome-svg/solid/stream.svg
-title: Status Page
-description: An example of an open-source statically-built [status-page](https://github.com/someimportantcompany/status-page).
+title: Product Status Page
+# icon: /img/font-awesome-svg/solid/stream.svg
+# description:  An example of an open-source statically-built [status-page](https://github.com/someimportantcompany/status-page).
 
-# status: All looks good!
+status: All looks good!
+
+# status:
+#   level: warning
+#   message: We're experiencing a high volume of requests to our web server. Please stand by.
+
+# status:
+#   level: error
+#   message: Our API server is currently offline. We're working hard to resume service, please stand by.
 
 levels:
   success:
@@ -14,25 +22,21 @@ levels:
     color: '#DC3545'
 
 components:
-  status-page:
-    name: Status-Page
-    icon: /img/font-awesome-svg/solid/stream.svg
-    url: https://github.com/someimportantcompany/status-page
-  github-pages:
-    name: GitHub Pages
-    icon: /img/font-awesome-svg/brands/github.svg
-    url: https://pages.github.com
+  apiserver:
+    name: API Server
+  webserver:
+    name: Web Server
 
-# groups:
-#   aws:
-#     name: Amazon Web Services
-#     components:
-#       ecs:
-#         name: Elastic Container Service
-#       rds:
-#         name: Relational Database Service
-#       es:
-#         name: Elasticsearch Service
+groups:
+  aws:
+    name: Amazon Web Services
+    components:
+      ecs:
+        name: Elastic Container Service
+      rds:
+        name: Relational Database Service
+      es:
+        name: Elasticsearch Service
 
 incidents:
   - title: '[Monzo] Payments from Nationwide may be delayed'

@@ -1,2 +1,2 @@
-baseurl: '/status-page'
+# baseurl: '/status-page'
 exclude: [ 'examples', 'README.md' ]

@@ -7,7 +7,7 @@ description: An example of an open-source statically-built [status-page](https:/
 levels:
   success:
     color: '#28A745'
-    label: Operational
+    label: OK
   warning:
     color: '#FFC107'
   error:
@@ -23,16 +23,61 @@ components:
     icon: /img/font-awesome-svg/brands/github.svg
     url: https://pages.github.com
 
-# groups:
-#   aws:
-#     name: Amazon Web Services
-#     components:
-#       ecs:
-#         name: Elastic Container Service
-#       rds:
-#         name: Relational Database Service
-#       es:
-#         name: Elasticsearch Service
+groups:
+  aws:
+    name: Amazon Web Services
+    icon: /img/font-awesome-svg/brands/aws.svg
+    components:
+      fargate:
+        name: Fargate on ECS
+        icon: /img/aws-svg/AWS-Fargate.svg
+      rds:
+        name: Relational Database Service
+        icon: /img/aws-svg/Amazon-RDS.svg
+      cache:
+        name: Elasticache
+        icon: /img/aws-svg/Amazon-ElastiCache.svg
+      es:
+        name: Elasticsearch Service
+        icon: /img/aws-svg/Amazon-Elasticsearch-Service.svg
+      cognito:
+        name: Cognito
+        icon: /img/aws-svg/Amazon-Cognito.svg
+  gcp:
+    name: Google Cloud Platform
+    icon: /img/font-awesome-svg/brands/google.svg
+    components:
+      engine:
+        name: Compute Engine
+        icon: /img/gcp-svg/Compute%20Engine.svg
+      run:
+        name: Cloud Run
+        icon: /img/gcp-svg/Cloud%20Run.svg
+      spanner:
+        name: Cloud Spanner
+        icon: /img/gcp-svg/Cloud%20Spanner.svg
+      cdn:
+        name: Cloud CDN
+        icon: /img/gcp-svg/Cloud%20CDN.svg
+  azure:
+    name: Microsoft Azure
+    icon: /img/font-awesome-svg/brands/microsoft.svg
+    components:
+      active-directory:
+        name: Active Directory
+        icon: /img/azure-svg/Active%20Directory.svg
+      database:
+        name: Azure Database
+        icon: /img/azure-svg/Azure%20Database%20(Generic).svg
+      database-mysql:
+        name: Azure Database for MySQL
+        icon: /img/azure-svg/Azure%20Database%20for%20MySQL%20servers.svg
+      function-apps:
+        name: Azure Function Apps
+        icon: /img/azure-svg/Function%20Apps.svg
+      general-storage:
+        name: Azure General Storage
+        icon: /img/azure-svg/General%20Storage.svg
 
 incidents:
   - title: '[Monzo] Payments from Nationwide may be delayed'

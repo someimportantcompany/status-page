@@ -45,12 +45,12 @@
     <div class="d-flex w-100 align-items-center">
       <div class="icon-block">
         {%- if group.icon -%}
-        <img class="icon mr-2" src="{{ group.icon }}"/>
+        <img class="icon mr-2" src="{{ group.icon | relative_url }}"/>
         {%- endif -%}
       </div>
       <p class="m-0">
         {%- if group.url -%}
-        <a href="{{ group.url }}"><strong>{{ group.name | default: 'Group' }}</strong></a>
+        <a href="{{ group.url }}">{{ group.name | default: 'Group' }}</a>
         {%- else -%}
         <strong>{{ group.name | default: 'Group' }}</strong>
         {%- endif -%}

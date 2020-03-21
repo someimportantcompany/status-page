@@ -1,0 +1,20 @@
+---
+---
+{%- assign defaultLevel = site.data.status.levels | first -%}
+{
+  "lastUpdatedAt": "{{ site.time | date_to_rfc822 }}",
+  {%- if site.data.status.status %}
+  "status": {
+    "class": {% if site.data.status.status.class %}"{{ site.data.status.status.class }}"{% else %}null{% endif %},
+    "color": "{{ site.data.status.status.color
+        | default: site.data.status.levels[site.data.status.status.level].color
+        | default: defaultLevel[1].color
+        | default: '#28A745' }}",
+    "message": "{{ site.data.status.status.message | default: site.data.status.status | markdownify | strip }}"
+  }
+  {% else %}
+  "status": {
+    "message": "All looks good!"
+  }
+  {% endif %}
+}

@@ -5,7 +5,7 @@ layout: null
 {%- assign rows = site.data.status.incidents | group_by_exp:"row","row.timestamp | default: row.updates[0].timestamp | date: '%F'" | sort: "name", "first" | reverse -%}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.data.status.title | strip | xml_escape }} - Incident History</title>
+    <title>{{ site.data.status.title | strip_newlines | strip | xml_escape }} - Incident History</title>
     {%- if site.data.status.description -%}
     <description>{{ site.data.status.description | markdownify | strip_html | strip | xml_escape }}</description>
     {%- endif -%}
@@ -18,11 +18,11 @@ layout: null
     {% for incident in r.items %}
     <item>
       {%- if incident.title -%}
-      <title>{{ incident.title | strip | xml_escape }}</title>
+      <title>{{ incident.title | strip_newlines | strip | xml_escape }}</title>
       {%- elsif incident.body -%}
-      <title>{{ incident.body | markdownify | strip_html | strip | truncatewords: 10 | xml_escape }}</title>
+      <title>{{ incident.body | markdownify | strip_html | strip_newlines | strip | truncatewords: 10 | xml_escape }}</title>
       {%- else -%}
-      <title>{{ incident.updates[0].body | markdownify | strip_html | strip | truncatewords: 10 | xml_escape }}</title>
+      <title>{{ incident.updates[0].body | markdownify | strip_html | strip_newlines | strip | truncatewords: 10 | xml_escape }}</title>
       {%- endif -%}
       {%- if incident.body -%}
       <description><![CDATA[{{ incident.body | markdownify | strip_html | strip }}]]></description>

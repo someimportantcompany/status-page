@@ -55,3 +55,36 @@ layout: default
   </div>
   {%- endfor -%}
 </section>
+
+<script type="text/javascript">
+(() => {
+  function assert(value, err) {
+    if (!value) {
+      throw err;
+    }
+  }
+
+  const built = new Date('{{ site.time | date_to_rfc822 }}');
+
+  window.loadQueue = (window.loadQueue || []).concat(function checkLatest() {
+    assert(typeof axios === 'function', new Error('Failed to load axios'));
+
+    axios.get('/current.json').then(function (res) {
+      try {
+        assert(res && res.status === 200, new Error('Expected 200 OK status code'));
+        assert(res && res.data && res.data.lastUpdatedAt, new Error('Expected lastUpdatedAt entry'));
+
+        if (built < new Date(res.data.lastUpdatedAt)) {
+          window.location.reload();
+        }
+
+        setTimeout(checkLatest, 5000);
+      } catch (err) {
+        console.error(err);
+      }
+    }).catch(function (err) {
+      console.error(err);
+    });
+  });
+})();
+</script>

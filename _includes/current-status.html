@@ -1,4 +1,4 @@
-{%- assign defaultLevel = site.data.status.levels | first %}
+{%- assign defaultLevel = site.data.status.levels | first -%}
 {%- assign statusColor = site.data.status.status.color
     | default: site.data.status.levels[site.data.status.status.level].color
     | default: defaultLevel[1].color

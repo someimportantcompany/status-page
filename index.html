@@ -69,7 +69,7 @@ layout: default
   window.loadQueue = (window.loadQueue || []).concat(function checkLatest() {
     assert(typeof axios === 'function', new Error('Failed to load axios'));
 
-    axios.get('/current.json').then(function (res) {
+    axios.get('{{ "/current.json" | relative_url }}').then(function (res) {
       try {
         assert(res && res.status === 200, new Error('Expected 200 OK status code'));
         assert(res && res.data && res.data.lastUpdatedAt, new Error('Expected lastUpdatedAt entry'));

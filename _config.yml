@@ -1,2 +1,8 @@
 # baseurl: '/status-page'
 exclude: [ 'examples', 'README.md' ]
+
+safe: true
+plugins:
+  - jekyll-redirect-from
+whitelist:
+  - jekyll-redirect-from

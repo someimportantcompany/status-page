@@ -220,6 +220,7 @@ See [Jekyll's configuration](https://jekyllrb.com/docs/configuration/options/) f
 
 ## Release Notes
 
+- **1.1.0** Added a `current.json` file which will trigger a refresh when the status page is next built 💪
 - **1.0.0** Initial release 🎉
 
 ## Special Thanks

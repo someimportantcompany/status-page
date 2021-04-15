@@ -1,8 +1,8 @@
-<div align="center">
-  <h1><img height="22px" width="22px" src="/img/font-awesome-svg/solid/stream.svg"/> status-page</h1>
-  <p>An open-source Status Page site for your projects, big or small!</p>
-  <p>Check out the <a href="https://someimportantcompany.github.io/status-page">example status-page</a>!</p>
-</div>
+<h1><img height="22px" width="22px" src="/img/font-awesome-svg/solid/stream.svg"/> status-page</h1>
+
+An open-source Status Page site for your projects, big or small!
+
+Check out the [example status-page](https://someimportantcompany.github.io/status-page)!
 
 ## Features
 
@@ -14,7 +14,7 @@
 
 Most of the time you launch a status page up to communicate down-time & scheduled maintainence to your customers and/or users. Maybe your product is key to their workflow, and you want to let them know when it'll be unavailable and thus should plan accordingly. Perhaps you get a flurry of messages when your blog goes down & you just want a place to keep your readers informed. You could be [a startup bank](https://monzo.statuspage.io/), [a cloud infrastructure provider](https://status.digitalocean.com/), [a website monitoring service](https://status.pingdom.com/) or [a university](https://www.uodit.info/) - regardless, you want a dedicated channel to let your users know that you're aware of the problem & you're on it.
 
-There are plenty of hosted status page solutions out there. One of the best is [Atlassian's StatusPage](https://statuspage.io), however (in my humble opinion) their pricing is far to high for a static status page, especially for open-source projects or products just launching. They [justify their pricing](https://www.statuspage.io/pricing) & have excellent features focused around incident management, team management, notifications, webhooks, API access & Single Sign-On. But if you just want a simple status page why isn't their a free alternative? If they offered a free plan with 1 user, no subscribing features, no metrics, basic customisation & incident management, this project would evaporate overnight.
+There are plenty of hosted status page solutions out there. One of the best is [Atlassian's StatusPage](https://statuspage.io), however (in my humble opinion) their pricing is far to high for a static status page, especially for open-source projects or products just launching. They [justify their pricing](https://www.statuspage.io/pricing) & have excellent features focused around incident management, team management, notifications, webhooks, API access & Single Sign-On. But if you just want a simple status page why isn't their a free alternative? ~If they offered a free plan with 1 user, no subscribing features, no metrics, basic customisation & incident management, this project would evaporate overnight.~ **Update:** StatusPage now offer [a Free plan with a reasonable set of features](https://support.atlassian.com/statuspage/docs/what-do-i-get-on-a-free-plan)! [See the Pricing page for more details](https://www.atlassian.com/software/statuspage/pricing).
 
 ## Getting Started
 
